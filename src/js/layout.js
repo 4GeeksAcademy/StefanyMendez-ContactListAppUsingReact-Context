@@ -2,10 +2,8 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
-
 import injectContext from "./store/appContext.js";
 
-import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer.js";
 import AddContact from "./views/AddContact.js";
 import Contacts from "./views/Contacts.js";
