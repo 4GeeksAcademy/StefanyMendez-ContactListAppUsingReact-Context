@@ -10,27 +10,25 @@ export const AddContact = (...props) => {
   return (
     <div className="container mt-4">
       <form className="needs-validation" onSubmit={e => {
-        
-        var toastTrigger = document.getElementById('liveToastBtn')
-        var toastLiveExample = document.getElementById('liveToast')
-        if (toastTrigger) {
 
-            var toast = new bootstrap.Toast(toastLiveExample)
-
-            toast.show()
         
+        const toastLiveUpadate= document.getElementById('updateToast')
+        const toastLiveAdd = document.getElementById('addToast')
+
         if (!!store.id_contact) {
           e.preventDefault();
           actions.updateContact(e, store.id_contact.id)
-         
+          let toast = new bootstrap.Toast(toastLiveUpadate)
+          toast.show()
+
         } else {
           e.preventDefault();
           actions.saveContact()
           e.target.reset();
-
-
-          }
+          let toast = new bootstrap.Toast(toastLiveAdd)
+          toast.show()
         }
+
       }
       }>
         <h1 className="text-center">Add a new Contact</h1>
@@ -92,28 +90,41 @@ export const AddContact = (...props) => {
           />
         </div>
 
-
         <div className="mb-3">
-
           <button className="btn btn-primary w-100" type="submit" id="liveToastBtn">Save</button>
         </div>
       </form>
+
       <Link className="mt-3 w-100 text-center" to="/contacts" onClick={() => deleteID()}>
         or get back to contacts
       </Link>
 
-      
       <div className="position-fixed bottom-0 mb-5 end-0 p-3">
-        <div id="liveToast" className="toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="updateToast" className="toast" role="alert" aria-live="assertive" aria-atomic="true">
           <div className="toast-header">
-          <i className="fa-solid fa-circle-check text-success me-2"></i>
-            <strong className="me-auto">Contact List</strong>
+            <i className="fa-solid fa-circle-check text-success me-2"></i>
+            <strong className="me-auto">Edit Contact</strong>
             <small>Now</small>
             <button type="button" className="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
           </div>
           <div className="toast-body">
-          <i className="fa-solid fa-user-check mx-4 text-success"></i>
-            Contact Saved successfully
+          <i className="fa-solid fa-user-pen mx-4 text-success"></i>
+            Contact Edit Successfully
+          </div>
+        </div>
+      </div>
+
+      <div className="position-fixed bottom-0 mb-5 end-0 p-3">
+        <div id="addToast" className="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          <div className="toast-header">
+            <i className="fa-solid fa-circle-check text-success me-2"></i>
+            <strong className="me-auto">Save Contact</strong>
+            <small>Now</small>
+            <button type="button" className="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+          <div className="toast-body">
+            <i className="fa-solid fa-user-check mx-4 text-success"></i>
+            Contact Saved Successfully
           </div>
         </div>
       </div>

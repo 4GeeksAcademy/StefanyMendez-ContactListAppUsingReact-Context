@@ -67,7 +67,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			saveContact: () => {
 
 				const store = getStore();
-
+				setStore({id_contact:null})
+				
 				const contact = {
 					agenda: store.agenda,
 					id: uuid.v4(),
